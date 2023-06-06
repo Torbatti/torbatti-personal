@@ -1,0 +1,46 @@
+---
+// lib import
+import { Image, Picture } from '@astrojs/image/components';
+---
+<div id="introMe" class="vbox box-col flex jcontent-center aitems-center">
+  <div class="square bc3 flex jcontent-center aitems-center">
+      
+    <Image src="IntroImage.jpg" width={1920} height={1080} alt="" format="avif"/>
+
+  </div>
+</div>
+
+
+<style>
+  #introMe{margin:2rem auto;}
+  #my_intro{font-size:larger;margin:1rem auto;}
+  .square img,.square{
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+    border-radius:4px;
+  }
+  .square img{
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    background-color:var(--c3);
+  }
+
+  .square     {width:21rem;height:14rem;}
+  .square img {width:19rem;height:12rem;}
+  @media(min-width:480px){
+    .square     {width:25rem;height:18rem;}
+    .square img {width:23rem;height:16rem;}
+  }
+  @media(min-width:640px){
+    .square     {width:21rem;height:28rem;}
+    .square img {width:26rem;height:19rem;}
+  }
+  @media(min-width:768px){
+    #introMe{grid-template-columns:1fr 1fr;}
+    .square     {width:18rem;height:25rem;}
+    .square img {width:23rem;height:16rem;}
+  }
+  @media(min-width:1280px){
+    .square     {width:20rem;height:35rem;}
+    .square img {width:720px;height:360px;}
+  }
+
+</style>

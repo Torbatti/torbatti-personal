@@ -1,0 +1,26 @@
+---
+import BaseBody from "./BaseBody.astro"
+import BaseHead from "./BaseHead.astro"
+
+type Props={
+  title: string;
+  description: string;
+  key_words:string;
+  author:string;
+};
+const {
+  title,
+  description,
+  key_words,
+  author
+} = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="en">
+  <BaseHead title={title} description={description} author={author} key_words={key_words}>
+    <slot name="head"/>
+  </BaseHead>
+  <BaseBody>
+    <slot/>
+  </BaseBody>
+</html>

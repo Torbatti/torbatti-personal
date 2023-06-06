@@ -1,0 +1,13 @@
+{
+  "name": "torbatti-personal",
+  "version": "0.0.0",
+  "license": "MIT",
+  "scripts": {},
+  "private": true,
+  "devDependencies": {
+    "nx": "16.2.2"
+  },
+  "workspaces": [
+    "packages/*"
+  ]
+}

@@ -1,0 +1,33 @@
+---
+import ShelfLayout from "../_ShelfLayout.astro";
+
+// ! THIS IS NOT A MISTAKE
+// ! NO POCKET BASE SERVER IN PROD
+import pb from "../../libs/pocketbase";
+
+export async function getStaticPaths() {
+  const adminData = await pb.admins.authWithPassword('admin@example.com', 'admin@example.com');
+  const records = await pb.collection('games').getFullList();
+  console.log(records);
+
+  // const data = await fetch('...').then(response => response.json());
+
+  return records.map((post) => {
+    return {
+      params: { id: post.id },
+      props: { post },
+    };
+  });
+}
+
+const { id } = Astro.params;
+const { post } = Astro.props;
+---
+<ShelfLayout title="کتابخانه" description="" author="" key_words="" child_url="book">
+  <h1>{post.game_title}</h1>
+</ShelfLayout>
+
+<style>
+  #header-left_slot a{text-decoration:none;font-size:small;font-weight: bold;}
+  #header-left_slot a:hover{text-decoration:underline;}
+</style>

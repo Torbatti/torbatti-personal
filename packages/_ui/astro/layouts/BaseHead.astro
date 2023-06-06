@@ -1,0 +1,48 @@
+---
+// Import stylesheets
+import "../styles/albors.css"
+
+// Import images/icons
+import favicon from "../public/favicon.svg"
+
+// Astro Props
+type Props={
+  title: string;
+  description: string;
+  key_words:string;
+  author:string;
+};
+const {
+  title,
+  description,
+  key_words,
+  author
+} = Astro.props;
+---
+<head>
+  <!-- Char / Direction / Default Language -->
+  <meta charset="UTF-8">
+
+  <!-- Browser -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!-- Screen Size -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- SEO -->
+  <meta name="keywords" content={key_words}>
+  <meta name="description" content={description}>
+  <meta name="author" content={author}>
+
+  <!-- Base Of -->
+  <!-- <base href="https://www.torbatti.ir/" target="_blank"> -->
+
+  <!--  -->
+  <title> {title} </title>
+  <link rel="shortcut icon" href={favicon} type="image/x-icon">
+  
+  <!-- Fonts -->
+  <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-Variable-font-face.css" rel="stylesheet" type="text/css" />
+
+  <slot/>
+</head>

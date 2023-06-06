@@ -1,0 +1,92 @@
+---
+import BaseLayout from "../../../_ui/astro/layouts/BaseLayout.astro"
+
+import BaseHeader from "../../../_ui/astro/components/BaseHeader.astro"
+
+// ! THIS IS NOT A MISTAKE
+// ! NO POCKET BASE SERVER IN PROD
+import pb from "libs/pocketbase";
+
+const adminData = await pb.admins.authWithPassword('admin@example.com', 'admin@example.com');
+const grecords = await pb.collection('games').getList(1,5,{sort:'-created',});
+const brecords = await pb.collection('books').getList(1,5,{sort:'-created',});
+const mrecords = await pb.collection('movies').getList(1,5,{sort:'-created',});
+const arecords = await pb.collection('animations').getList(1,5,{sort:'-created',});
+
+const agrecords = grecords.items;
+const abrecords = brecords.items;
+const amrecords = mrecords.items;
+const aarecords = arecords.items;
+// const brecords = await pb.collection('books').getFullList({sort: 'created',});
+// console.log(records);
+---
+<BaseLayout title="طاقچه" description="" author="" key_words="">
+
+  <BaseHeader>
+    <div slot="header-right">
+      <a href="/shelf/" class="tc3">طاقچه</a>
+    </div>
+    <div id="header-left_slot" class="flex aitems-center mid-gap" slot="header-left">
+      <a href="" class="tc3">بلاگ</a>
+      <a href="" class="tc3">طاقچه</a>
+    </div>
+  </BaseHeader>
+
+  <div id="shelf" class="tc2 box flex aitems-start low-gap">
+ 
+    <div id="shelf-book" class="">
+      <a href="/shelf/book/" class="tc5 text-medium">کتابخانه</a>
+      <p class="a tc3">جدیدترین ها:</p>
+      <div id="items">
+        {abrecords.map((post)=>(
+          <div class="a">{post.book_title}</div>
+        ))}
+      </div>
+    </div>
+
+    <div id="shelf-game"class="">
+      <a href="/shelf/game/" class="tc5 text-medium">چاه بازی</a>
+      <p class="a tc3">جدیدترین ها:</p>
+      <div id="items">
+        {agrecords.map((post)=>(
+          <div class="a">{post.game_title}</div>
+        ))}
+      </div>
+    </div>
+
+    <div id="shelf-movie" class="">
+      <a href="/shelf/movie/" class="tc5 text-medium">فیلم</a>
+      <p class="a tc3">جدیدترین ها:</p>
+      <div id="items">
+        {abrecords.map((post)=>(
+          <div class="a">{post.book_title}</div>
+        ))}
+      </div>
+    </div>
+
+    <div id="shelf-animation" class="">
+      <a href="/shelf/animation/" class="tc5 text-medium">کارتون</a>
+      <p class="a tc3">جدیدترین ها:</p>
+      <div id="items">
+        {agrecords.map((post)=>(
+          <div class="a">{post.game_title}</div>
+        ))}
+      </div>
+    </div>
+
+  </div>
+</BaseLayout>
+
+<style>
+  .a{text-decoration:none;font-size:small;font-weight:bold;}
+
+  a{text-decoration:none;font-size:small;font-weight:bold;}
+  a:hover{text-decoration:underline;}
+
+  @media(max-width:768px){
+    #shelf{
+      flex-direction:column;
+      gap:1rem;
+    }
+  }
+</style>

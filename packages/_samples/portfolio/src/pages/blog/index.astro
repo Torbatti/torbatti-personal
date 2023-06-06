@@ -1,0 +1,30 @@
+---
+import PostCard from "../../components/blog/PostCard.astro";
+import MainLayout from "../../layouts/MainLayout.astro";
+
+const allPosts = await Astro.glob("./*.md")
+---
+<MainLayout title="Blog" description="Blogs Page">
+  <div id="all_posts" class="vbox grid mid-gap">
+    {allPosts.map((post)=>
+      <PostCard post={post}/>
+    )}
+  </div>
+</MainLayout>
+
+  <style>
+    #all_posts{
+      min-height:calc(100vh - 6rem);
+      padding:1rem 0;
+    }
+    @media(min-width:640px){
+      #all_posts{
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+    @media(min-width:1280px){
+      #all_posts{
+        grid-template-columns:1fr 1fr 1fr;
+      }
+    }
+  </style>

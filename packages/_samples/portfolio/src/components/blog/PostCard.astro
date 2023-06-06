@@ -1,0 +1,97 @@
+---
+const {post} = Astro.props;
+
+
+// utils import
+import { slugify , formatDate } from "../../scripts/utils";
+
+// lib import
+import { Image, Picture } from '@astrojs/image/components';
+---
+<div id="post">
+
+  <small>
+    <a href={`/category/${slugify(post.frontmatter.category)}/`} id="post_category" class="bc3 tc4">{post.frontmatter.category}</a>
+  </small>    
+
+  <div id="post_image" class="">
+    <Image 
+    src={post.frontmatter.image.src}
+    alt={post.frontmatter.image.alt}
+    width={1920}
+    height={1080}
+    format="avif"
+    fit="cover"
+    quality={80}
+    aspectRatio="5:2"
+    />
+  </div>
+
+  <a href={post.url} id="post-title" class="tc3"><h3>{post.frontmatter.title}</h3></a>
+
+  <div id="post_info" class="flex">
+    <small>
+      <a href={`/author/${slugify(post.frontmatter.author)}/`} class="tc1">{post.frontmatter.author}</a>
+    </small>
+    <small class="">
+      &nbsp;|&nbsp;
+    </small>
+    <small>
+      {formatDate(post.frontmatter.date)}
+    </small>
+  </div>
+
+  <p id="post_description">{post.frontmatter.description}</p>
+
+  <a href={post.url} id="post_read_more" class="bc3 tc4"> ادامه مطلب </a>
+
+  <!-- <pre>{JSON.stringify(post.frontmatter,null,2)}</pre> -->
+
+</div>
+
+<style>
+
+  #post a{text-decoration:none;}
+  #post {margin:0.5rem 0;}
+
+  #post_image img{
+    width:100%;
+    height:50%;
+    border-radius:2px;
+    border:2px solid var(--c3);
+  }
+  @media(min-width:640px){
+    #post_image img{height:30vw;}
+  }
+  @media(min-width:768px){
+    #post_info{flex-direction:row;}
+  }
+  @media(min-width:1280px){
+    #post_image img{height:15rem;}
+  }
+
+  #post_category{
+    padding:4px 8px;
+    position: relative;
+    top:1rem;
+    right:0.5rem;
+    border-radius:2px;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+  }
+
+  a#post_read_more{
+    padding:2px 0.5rem;
+    position: relative;
+    border-radius:2px;
+    top:0.5rem;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+  }
+  #post_info{
+    padding:0.5rem 0.5rem;
+  }
+  #post_description{
+  }
+  small{
+    font-size:small;
+  }
+</style>

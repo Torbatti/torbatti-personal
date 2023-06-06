@@ -1,0 +1,25 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+---
+<!-- <MainLayout title=""> -->
+<MainLayout title="My Blog">
+  <div id="error_404" class="flex flex-col jcontent-center aitems-center low-gap">
+    <div id="image">
+      <img src="https://picsum.photos/300" alt="Picsum Picture">
+    </div>
+    <p> صفحه ی مورد نظر یافت نشد </p>
+    <p class="tc3"> بازگشت به <a href="/" class="tc2"> خانه </a> </p>
+  </div>
+</MainLayout>
+
+<style>
+  #error_404{height:calc(100vh - 6rem);}
+
+  img{
+    background-color:var(--c1);
+    width:300px;
+    height: 300px;
+    border-radius:4px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+  }
+</style>

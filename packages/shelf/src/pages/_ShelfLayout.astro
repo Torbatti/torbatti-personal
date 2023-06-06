@@ -1,0 +1,46 @@
+---
+import BaseLayout from "../../../_ui/astro/layouts/BaseLayout.astro"
+import BaseHeader from "../../../_ui/astro/components/BaseHeader.astro"
+
+type Props={
+  title: string;
+  description: string;
+  key_words:string;
+  author:string;
+
+  child_url:string;
+};
+const {
+  title,
+  description,
+  key_words,
+  author,
+
+  child_url,
+} = Astro.props;
+
+---
+<BaseLayout title={title} description={description} author={author} key_words={key_words}>
+  <BaseHeader>
+    <div slot="header-right" class="flex mid-gap">
+      
+      <a href=`/shelf/${child_url}/` class="tc3">{title}</a>
+      <a href=`/shelf/${child_url}/create` class="tc3">ساخت</a>
+    </div>
+    <div id="header-left_slot" class="flex aitems-center mid-gap" slot="header-left">
+      <a href="/blog/" class="tc3">بلاگ</a>
+      <a href="/shelf/" class="tc3">طاقچه</a>
+    </div>
+  </BaseHeader>
+
+  <div class="box">
+    <slot/>
+  </div>
+  
+</BaseLayout>
+
+<style>
+  a{text-decoration:none;font-size:small;font-weight: bold;}
+  a:hover{text-decoration:underline;}
+
+ </style>

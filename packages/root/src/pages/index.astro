@@ -1,0 +1,26 @@
+---
+import BaseLayout from "../../../_ui/astro/layouts/BaseLayout.astro"
+
+import BaseHeader from "../../../_ui/astro/components/BaseHeader.astro"
+
+---
+<BaseLayout title="صفحه اصلی" description="" author="" key_words="">
+  <BaseHeader>
+    <div id="header-left_slot" class="flex aitems-center mid-gap" slot="header-left">
+      <a href="/blog" class="tc3">بلاگ</a>
+      <a href="/shelf" class="tc3">طاقچه</a>
+    </div>
+  </BaseHeader>
+  <div class="tc2 bc4 box">
+    <p class="text-underoverline">Lorem ipsum dolor</p>
+    <p class="text-bolder">Lorem ipsum dolor</p>
+    <p class="">Lorem ipsum dolor</p>
+    <p class="">Lorem ipsum dolor</p>
+    <p class="">Lorem ipsum dolor</p>
+  </div>
+</BaseLayout>
+
+<style>
+  #header-left_slot a{text-decoration:none;font-size:small;font-weight: bold;}
+  #header-left_slot a:hover{text-decoration:underline;}
+</style>

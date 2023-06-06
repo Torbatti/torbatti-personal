@@ -1,0 +1,21 @@
+{
+  "name": "astro-sample",
+  "description": "astro-sample description",
+  "type": "module",
+  "version": "0.0.1",
+  "dependencies": {
+    "astro": "^2.5.5"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.14",
+    "postcss": "^8.4.23",
+    "tailwindcss": "^3.3.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  }
+}

@@ -1,0 +1,34 @@
+---
+// Component Import
+import MainHead from './MainHead.astro';
+import MainFooter from './MainFooter.astro';
+import MainHeader from './MainHeader.astro';
+
+// Style Import
+// import "../styles/global.css"
+import "../styles/albors.css"
+// import "../styles/main.css"
+
+// Interfaces
+interface Props{
+  title?:string;
+  description?:string;
+}
+// 
+const { title = "Default Title" , description = "Default Description" }= Astro.props;
+---
+
+<html lang="en">
+  <MainHead title={title} description={description}/>
+	<body class="bc1 tc2">
+		
+    <MainHeader/>
+
+    <slot> Default Text </slot>
+    <!-- <slot/> -->
+    <!-- <slot name="Hi"/> -->
+
+    <MainFooter/>
+
+  </body>
+</html>

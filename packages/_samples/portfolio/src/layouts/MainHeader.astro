@@ -1,0 +1,89 @@
+---
+
+// import navData from "../data/navData";
+---
+<header class=" bc1">
+  <div id="header" class="box flex aitems-center ">
+      <a href="/" id="site_logo" class=""> تربتی </a>
+      <div class="dots">
+        <div class="cd1"></div>
+        <div class="cd2"></div>
+        <div class="cd3"></div>
+      </div>
+  </div>
+</header>
+
+<script>
+  import "../scripts/nav"
+</script>
+
+<style>
+  /* header{position:sticky;top:0;z-index:2;} */
+  #header{height:3rem;}
+
+  #header a{color:var(--c2);text-decoration:none;}
+  #header a:hover{text-decoration:underline;}
+
+  a#site_logo{transition:transform .3s ease;color:var(--c3);font-weight:bolder;}
+  a#site_logo:hover{text-decoration:none;transform:translate(0px,-5px);}
+
+  .dots{
+    width:50px;
+    height:20px;
+  }
+  .cd1{
+    position: absolute;
+    top: 0;
+    border-radius:100%;
+    width:.5rem;
+    height:.5rem;
+    transform: translate(-1rem,1rem);
+    background: -webkit-radial-gradient(#326e66,#339989);
+  }
+  .cd2{
+    position: absolute;
+    top: 0;
+    border-radius:100%;
+    width:.5rem;
+    height:.5rem;
+    transform: translate(-1rem,1.6rem);
+    background: -webkit-radial-gradient(#326e66,#339989);
+  }
+  .cd3{
+    position: absolute;
+    top: 0;
+    border-radius:100%;
+    width:.5rem;
+    height:.5rem;
+    transform: translate(-.5rem,1.25rem);
+    background: -webkit-radial-gradient(#326e66,#339989);
+  }
+  
+  a#site_logo:hover ~ .dots .cd1{
+    --tcsx:-1rem;
+    --tcsy:1rem;
+    --tcex:-.5rem;
+    --tcey:1.25rem;
+    animation:translate-change .25s infinite;
+  }
+  a#site_logo:hover ~ .dots .cd2{
+    --tcsx:-1rem;
+    --tcsy:1.6rem;
+    --tcex:-1rem;
+    --tcey:1rem;
+    animation:translate-change .25s infinite;
+  }
+  a#site_logo:hover ~ .dots .cd3{
+    --tcsx:-.5rem;
+    --tcsy:1.25rem;
+    --tcex:-1rem;
+    --tcey:1.6rem;
+    animation:translate-change .25s infinite;
+  }
+  @keyframes translate-change {
+    from {transform: translate(var(--tcsx),var(--tcsy))}
+    to   {transform: translate(var(--tcex),var(--tcey))}
+  }
+
+</style>
+
