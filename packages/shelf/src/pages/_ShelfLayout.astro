@@ -25,7 +25,7 @@ const {
     <div slot="header-right" class="flex mid-gap">
       
       <a href=`/shelf/${child_url}/` class="tc3">{title}</a>
-      <a href=`/shelf/${child_url}/create` class="tc3">ساخت</a>
+      <a href=`/shelf/${child_url}/create` class="tc3 sm-hide">ساخت</a>
     </div>
     <div id="header-left_slot" class="flex aitems-center mid-gap" slot="header-left">
       <a href="/blog/" class="tc3">بلاگ</a>
@@ -34,7 +34,7 @@ const {
     </div>
   </BaseHeader>
 
-  <div class="box">
+  <div id="shelf" class="box">
     <slot/>
   </div>
   
@@ -43,5 +43,12 @@ const {
 <style>
   a{text-decoration:none;font-size:small;font-weight: bold;}
   a:hover{text-decoration:underline;}
+
+  #shelf{
+		min-height: calc(100vh - 4rem);
+    padding:8px;
+    margin-bottom:1rem;
+		border:2px solid var(--c3);
+	}
 
  </style>

@@ -45,11 +45,17 @@ const records = await pb.collection('games').getFullList({sort: 'game_title',});
 
 <style>
   #post{font-weight: bold;font-size:small;}
-
+  #posts{
+    direction:ltr;
+  }
   @media(max-width:768px){
     #posts{
       flex-direction:column;
       gap:1rem;
+      align-items:end;
+    }
+    #posts #post{
+      align-items:end;
     }
   }
 

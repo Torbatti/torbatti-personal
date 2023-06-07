@@ -42,10 +42,18 @@ const records = await pb.collection('movies').getFullList({sort: 'movie_title',}
 <style>
   #post{font-weight: bold;font-size:small;}
 
+  #posts{
+    direction:ltr;
+  }
+  
   @media(max-width:768px){
     #posts{
       flex-direction:column;
       gap:1rem;
+      align-items:start;
+    }
+    #posts #post{
+      align-items:start;
     }
   }
 
