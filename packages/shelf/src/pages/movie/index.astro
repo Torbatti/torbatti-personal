@@ -1,0 +1,52 @@
+---
+import ShelfLayout from "../_ShelfLayout.astro";
+
+// ! THIS IS NOT A MISTAKE
+// ! NO POCKET BASE SERVER IN PROD
+import pb from "../../libs/pocketbase";
+
+const adminData = await pb.admins.authWithPassword('admin@example.com', 'admin@example.com');
+const records = await pb.collection('movies').getFullList({sort: 'movie_title',});
+// console.log(records);
+---
+<ShelfLayout title="آرشیو فیلم" description="" author="" key_words="" child_url="movie">
+
+  <div id="posts" class="flex flex-wrap high-gap">
+    {records.map((post)=>(
+      <div id="post" class="tc2 flex flex-col jcontent-center aitems-center">
+        <p class="tc5">{post.movie_title}</p>
+
+        <div id="post-genre">
+          <p>{post.movie_genre} </p>
+        </div>
+        <div id="post-details" class="flex low-gap">
+          <p>{post.release_date} </p>
+
+          {
+            (post.movie_state === "plan") 
+            ?<p>{post.movie_state} </p> 
+            :<p>{post.movie_state} </p><p>{post.movie_rate}/10</p>
+          }
+          {
+            (post.movie_seasons !== 0) 
+            ?<p>S:{post.movie_seasons}</p>
+            :<></>
+          }
+        </div>
+      </div>
+    ))}
+  </div>
+
+</ShelfLayout>
+
+<style>
+  #post{font-weight: bold;font-size:small;}
+
+  @media(max-width:768px){
+    #posts{
+      flex-direction:column;
+      gap:1rem;
+    }
+  }
+
+</style>

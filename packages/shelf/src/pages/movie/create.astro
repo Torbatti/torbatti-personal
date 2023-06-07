@@ -1,0 +1,99 @@
+---
+import ShelfLayout from "../_ShelfLayout.astro";
+---
+<ShelfLayout title="آرشیو فیلم" description="" author="" key_words="" child_url="movie">
+  <div id="create_section" class="tc2 vbox flex flex-col aitems-center jcontent-center high-gap">
+
+    <form class="flex flex-col low-gap" name="createForm" onsubmit="event.preventDefault()">
+    <!-- <form class="flex flex-col low-gap" name="createForm" onsubmit="event.preventDefault()"> -->
+
+      <input type="text" id="" name="movie-title" placeholder="movie Title">
+
+      <input type="number" id="" name="movie-rate" placeholder="Movie Rate">
+      <input type="number" id="" name="movie-seasons" placeholder="Movie Seasons">
+      <input type="text" id="" name="movie-reld" placeholder="Movie Release Date">
+
+      <select name="movie-state" id="">
+        <option value="plan">       Plan         </option>
+        <option value="watching">   Watching      </option>
+        <option value="watched">    Watched         </option>
+        <option value="wishlist">   Wishlist     </option>
+        <option value="drop">       Drop         </option>
+      </select>
+
+
+      <select name="movie-type" id="">
+        <option value="oneshot">    Oneshot         </option>
+        <option value="series">     Series      </option>
+      </select>
+      
+      <button id="submitButton" type="submit" class="">ثبت</button>
+    </form>
+
+  </div>
+</ShelfLayout>
+
+<script>
+  import PocketBase from 'pocketbase';
+  const pb = new PocketBase("http://127.0.0.1:8090");
+
+  const adminData = await pb.admins.authWithPassword('admin@example.com', 'admin@example.com');
+  const records = await pb.collection('movies').getFullList();
+  console.log(records);
+
+  let subB:any = document.querySelector("#submitButton");
+  subB.addEventListener("click",()=>submitForm())
+
+  async function submitForm() {    
+    // Capture Form as X
+    let x:any = document.forms["createForm"];
+
+    const data = {
+      "movie_title":       x["movie-title"].value,
+      "movie_rate":        x["movie-rate"].value,
+      "movie_seasons":     x["movie-seasons"].value,
+      "release_date":      x["movie-reld"].value,
+      "movie_state":       x["movie-state"].value,
+      "movie_type":        x["movie-type"].value,
+    }
+
+    console.log(data);
+
+    const record = await pb.collection('movies').create(data);
+
+  }
+
+</script>
+
+<style>
+  /* REMOVES number type input arrows */
+    /* Chrome, Safari, Edge, Opera */
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+    /* Firefox */
+    input[type=number] {
+      -moz-appearance: textfield;
+    }
+  /*  */
+
+  a{text-decoration:none;font-size:small;font-weight: bold;}
+  a:hover{text-decoration:underline;}
+
+  #create_section{
+    height:90vh;
+  }
+  form input,form button,form select{
+    border-radius:4px;
+    padding:4px 1rem;
+    text-align:left;
+  }
+  form button{
+    text-align:center;
+    background-color:var(--c3);
+    color:var(--c1);
+    cursor: pointer;
+  }
+</style>

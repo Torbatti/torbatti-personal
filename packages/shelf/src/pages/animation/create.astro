@@ -1,0 +1,99 @@
+---
+import ShelfLayout from "../_ShelfLayout.astro";
+---
+<ShelfLayout title="سبد کارتون" description="" author="" key_words="" child_url="animation">
+  <div id="create_section" class="tc2 vbox flex flex-col aitems-center jcontent-center high-gap">
+
+    <form class="flex flex-col low-gap" name="createForm" onsubmit="event.preventDefault()">
+    <!-- <form class="flex flex-col low-gap" name="createForm" onsubmit="event.preventDefault()"> -->
+
+      <input type="text" id="" name="animation-title" placeholder="Animation Title">
+
+      <input type="number" id="" name="animation-rate" placeholder="Animation Rate">
+      <input type="number" id="" name="animation-seasons" placeholder="Animation Seasons">
+      <input type="text" id="" name="animation-reld" placeholder="Animation Release Date">
+
+      <select name="animation-state" id="">
+        <option value="plan">       Plan         </option>
+        <option value="watching">   Watching      </option>
+        <option value="watched">    Watched         </option>
+        <option value="wishlist">   Wishlist     </option>
+        <option value="drop">       Drop         </option>
+      </select>
+
+
+      <select name="animation-type" id="">
+        <option value="oneshot">    Oneshot         </option>
+        <option value="series">     Series      </option>
+      </select>
+      
+      <button id="submitButton" type="submit" class="">ثبت</button>
+    </form>
+
+  </div>
+</ShelfLayout>
+
+<script>
+  import PocketBase from 'pocketbase';
+  const pb = new PocketBase("http://127.0.0.1:8090");
+
+  const adminData = await pb.admins.authWithPassword('admin@example.com', 'admin@example.com');
+  const records = await pb.collection('animations').getFullList();
+  console.log(records);
+
+  let subB:any = document.querySelector("#submitButton");
+  subB.addEventListener("click",()=>submitForm())
+
+  async function submitForm() {    
+    // Capture Form as X
+    let x:any = document.forms["createForm"];
+
+    const data = {
+      "animation_title":       x["animation-title"].value,
+      "animation_rate":        x["animation-rate"].value,
+      "animation_seasons":     x["animation-seasons"].value,
+      "release_date":          x["animation-reld"].value,
+      "animation_state":       x["animation-state"].value,
+      "animation_type":        x["animation-type"].value,
+    }
+
+    console.log(data);
+
+    const record = await pb.collection('animations').create(data);
+
+  }
+
+</script>
+
+<style>
+  /* REMOVES number type input arrows */
+    /* Chrome, Safari, Edge, Opera */
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+    /* Firefox */
+    input[type=number] {
+      -moz-appearance: textfield;
+    }
+  /*  */
+
+  a{text-decoration:none;font-size:small;font-weight: bold;}
+  a:hover{text-decoration:underline;}
+
+  #create_section{
+    height:90vh;
+  }
+  form input,form button,form select{
+    border-radius:4px;
+    padding:4px 1rem;
+    text-align:left;
+  }
+  form button{
+    text-align:center;
+    background-color:var(--c3);
+    color:var(--c1);
+    cursor: pointer;
+  }
+</style>

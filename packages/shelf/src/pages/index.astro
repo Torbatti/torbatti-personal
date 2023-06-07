@@ -32,7 +32,7 @@ const aarecords = arecords.items;
     </div>
   </BaseHeader>
 
-  <div id="shelf" class="tc2 box flex aitems-start low-gap">
+  <div id="shelf" class="tc2 box flex aitems-start high-gap">
  
     <div id="shelf-book" class="">
       <a href="/shelf/book/" class="tc5 text-medium">کتابخانه</a>
@@ -55,21 +55,21 @@ const aarecords = arecords.items;
     </div>
 
     <div id="shelf-movie" class="">
-      <a href="/shelf/movie/" class="tc5 text-medium">فیلم</a>
+      <a href="/shelf/movie/" class="tc5 text-medium">آرشیو فیلم</a>
       <p class="a tc3">جدیدترین ها:</p>
       <div id="items">
-        {abrecords.map((post)=>(
-          <div class="a">{post.book_title}</div>
+        {amrecords.map((post)=>(
+          <div class="a">{post.movie_title}</div>
         ))}
       </div>
     </div>
 
     <div id="shelf-animation" class="">
-      <a href="/shelf/animation/" class="tc5 text-medium">کارتون</a>
+      <a href="/shelf/animation/" class="tc5 text-medium">سبد کارتون</a>
       <p class="a tc3">جدیدترین ها:</p>
       <div id="items">
-        {agrecords.map((post)=>(
-          <div class="a">{post.game_title}</div>
+        {aarecords.map((post)=>(
+          <div class="a">{post.animation_title}</div>
         ))}
       </div>
     </div>
