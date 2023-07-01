@@ -5,13 +5,6 @@ import BaseHeader from "../../../_ui/astro/components/BaseHeader.astro"
 
 ---
 <BaseLayout title="صفحه ی مورد نظر پیدا نشد" description="" author="" key_words="">
-  <BaseHeader>
-    <div id="header-left_slot" class="flex aitems-center mid-gap" slot="header-left">
-      <a href="/blog/" class="tc3">بلاگ</a>
-      <a href="/projects/" class="tc3">پروژگان</a>
-      <a href="/shelf/" class="tc3">طاقچه</a>
-    </div>
-  </BaseHeader>
   <div id="introPage" class="box flex flex-col jcontent-between tc2">
     <div>
 
@@ -37,14 +30,6 @@ import BaseHeader from "../../../_ui/astro/components/BaseHeader.astro"
     </div>
   </div>
 </BaseLayout>
-
-<div id="footer" class="tc2 text-small text-bold box flex aitems-center">
-  <small>
-    Copyright &copy;
-    <span id="copyright" class="text-small text-bold"></span>
-    | All rights reserved
-  </small>
-</div>
 
 <script type="module">
   document.querySelector("#copyright").textContent= new Date().getFullYear().toString();

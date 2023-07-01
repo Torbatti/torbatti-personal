@@ -1,18 +1,8 @@
 ---
 import BaseLayout from "../../../_ui/astro/layouts/BaseLayout.astro"
-
-import BaseHeader from "../../../_ui/astro/components/BaseHeader.astro"
-
 ---
 <BaseLayout title="صفحه اصلی" description="" author="" key_words="">
-  <BaseHeader>
-    <div id="header-left_slot" class="flex aitems-center mid-gap" slot="header-left">
-      <a href="/blog/" class="tc3">بلاگ</a>
-      <a href="/projects/" class="tc3">پروژگان</a>
-      <a href="/shelf/" class="tc3">طاقچه</a>
-    </div>
-  </BaseHeader>
-  <div id="introPage" class="box flex flex-col jcontent-between tc2">
+  <div id="main_box" class="box flex flex-col jcontent-between tc2">
     <div>
       <div class="intro-main_titles">
         <h1 class="intro-creative_title"> خلاق </h1>
@@ -45,6 +35,7 @@ import BaseHeader from "../../../_ui/astro/components/BaseHeader.astro"
     </h5>
 
     <div class="index-links flex flex-wrap low-gap">
+      <a href="/contact/" class="index-link d-tbg-change"> ارتباط </a>
       <a href="/about/" class="index-link d-tbg-change"> درباره </a>
       <a href="/blog/" class="index-link d-tbg-change"> بلاگ </a>
       <a href="/projects/" class="index-link d-tbg-change"> پروژه گان </a>
@@ -57,35 +48,17 @@ import BaseHeader from "../../../_ui/astro/components/BaseHeader.astro"
   </div>
 </BaseLayout>
 
-<div id="footer" class="tc2 text-small text-bold box flex aitems-center">
-  <small>
-    Copyright &copy;
-    <span id="copyright" class="text-small text-bold"></span>
-    | All rights reserved
-  </small>
-</div>
-
-<script type="module">
-  document.querySelector("#copyright").textContent= new Date().getFullYear().toString();
-</script>
-
 <style>
-  #footer{height:3rem;}
-</style>
-
-<style>
-  #header-left_slot a{text-decoration:none;font-size:small;font-weight: bold;}
-  #header-left_slot a:hover{text-decoration:underline;}
-
-
-
 	a{text-decoration: none;}
-	#introPage{
-		height: calc(100vh - 6rem);
+
+	#main_box{
+		min-height: calc(100vh - 6rem);
 		border-right:2px solid var(--c3);
 	}
+
 	.intro-creative_title{
-		position:absolute;display:flex;z-index:-1; transform:rotate(90deg) translate(2rem,-4.5rem);font-size:4rem;
+		position:absolute;display:flex;z-index:-1; 
+    transform:rotate(90deg) translate(2rem,-4.5rem);font-size:4rem;
 		background: -webkit-linear-gradient(180deg,#131515 ,#339989,#339989,#339989,#339989,#131515);
 		-webkit-background-clip: text;
 		-webkit-text-fill-color: transparent;
@@ -139,8 +112,9 @@ import BaseHeader from "../../../_ui/astro/components/BaseHeader.astro"
 		border-left:2px dashed var(--c3);
 		padding-left:4px;
 	}
+
 	@media(min-width:768px){
-		#introPage{
+		#main_box{
 			border:2px solid var(--c3) ;
 		}
 		.intro-text{
