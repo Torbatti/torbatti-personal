@@ -36,11 +36,12 @@
 
   .ball{
     position:fixed;
-    animation: background-size 10s infinite;
 
   }
 
   .b1,.b3,.b5,.b7,.b9{
+    animation: background-size 10s infinite;
+
     opacity: .45;
     left:0;bottom:0;
     background-image:  radial-gradient(var(--c3) 0.8px, transparent 0.8px), radial-gradient(var(--c3) 0.8px, var(--c1) 0.8px);
@@ -51,11 +52,13 @@
     --mid_size: 400vh;
   }
   .b2,.b4,.b6,.b8,.b10{
+    animation: background-size 10s infinite;
+
     background-color:var(--c1);
     left:0;bottom:0;
 
     --start_size: 0vh;
-    --mid_size: calc(400vh - 25vh);
+    --mid_size: calc(400vh - 40vh);
   }
   
   .b1,.b2{animation-delay:calc( 10s + .0s);}
@@ -63,7 +66,7 @@
   .b5,.b6{animation-delay:calc( 10s + .5s);}
   .b7,.b8{animation-delay:calc( 10s + .75s);}
   .b9{animation-delay:calc(     10s + 1s);}
-  .b10{animation-delay:calc(    10s + 3s);}
+  .b10{animation-delay:calc(    10s + 1.66s);}
 
 @keyframes background-size{
   from
