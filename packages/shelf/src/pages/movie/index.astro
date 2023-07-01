@@ -3,7 +3,7 @@ import ShelfLayout from "../_ShelfLayout.astro";
 
 // ! THIS IS NOT A MISTAKE
 // ! NO POCKET BASE SERVER IN PROD
-import pb from "../../libs/pocketbase";
+import pb from "libs/pocketbase";
 
 const adminData = await pb.admins.authWithPassword('admin@example.com', 'admin@example.com');
 const records = await pb.collection('movies').getFullList({sort: 'movie_title',});
@@ -11,6 +11,40 @@ const records = await pb.collection('movies').getFullList({sort: 'movie_title',}
 ---
 <ShelfLayout title="آرشیو فیلم" description="" author="" key_words="" child_url="movie">
 
+  <div id="shelf-movie" class="tc2 shelf flex flex-col">
+    <a href="/shelf/movie/" class="tc3 text-medium">آرشیو فیلم</a>
+
+    <div id="items" class="flex low-gap">
+      <p class="a">دیدن:</p>
+      <a href="/shelf/movie/state/plan/" class="tc5">انتظار</a>
+      <a href="/shelf/movie/state/watching/" class="tc5">درحال</a>
+      <a href="/shelf/movie/state/watched/" class="tc5">دیده</a>
+      <a href="/shelf/movie/state/pc/" class="tc5">پرتاب</a>
+    </div>
+
+    <div id="items" class="flex low-gap">
+      <p class="a">ترین:</p>
+      <a href="/shelf/movie/rate/best/" class="tc5">بهترین</a>
+      <a href="/shelf/movie/rate/worst/" class="tc5">بدترین</a>
+    </div>
+
+    <div id="items" class="flex low-gap">
+      <p class="a">اولیت:</p>
+      <a href="/shelf/movie/priority/watch/" class="tc5">دیدن</a>
+    </div>
+
+    <div id="items" class="flex low-gap">
+      <p class="a">نوع:</p>
+      <a href="/shelf/movie/rate/worst/" class="tc5">سینمایی</a>
+      <a href="/shelf/movie/rate/best/" class="tc5">سریال</a>
+    </div>
+
+    <div id="items" class="flex low-gap">
+        <p class="a">بقیه موارد:</p>
+        <a href="/shelf/movie/critique/" class="tc5">نقد و بررسی</a>
+    </div>
+  </div>
+  
   <div id="posts" class="flex flex-wrap high-gap">
     {records.map((post)=>(
       <div id="post" class="tc2 flex flex-col jcontent-center aitems-center">
@@ -40,20 +74,24 @@ const records = await pb.collection('movies').getFullList({sort: 'movie_title',}
 </ShelfLayout>
 
 <style>
-  #post{font-weight: bold;font-size:small;}
+  #posts{direction:ltr;}
 
-  #posts{
-    direction:ltr;
-  }
-  
+  .shelf{margin-bottom:2rem;}
+  .shelf a,.a,#post a{text-decoration:none;font-size:small;font-weight:bold;}
+  .shelf a:hover,#post a:hover{text-decoration:underline;}
+
+  #post{font-weight: bold;font-size:small;}
   @media(max-width:768px){
+    #items{
+      gap:1rem;
+    }
+    .shelf{
+      gap:0.5rem;
+    }
+
     #posts{
       flex-direction:column;
       gap:1rem;
-      align-items:start;
-    }
-    #posts #post{
-      align-items:start;
     }
   }
 

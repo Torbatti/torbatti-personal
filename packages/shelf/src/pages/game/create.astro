@@ -8,21 +8,31 @@ import ShelfLayout from "../_ShelfLayout.astro";
     <!-- <form class="flex flex-col low-gap" name="createForm" onsubmit="event.preventDefault()"> -->
 
       <input type="text" id="" name="game-title" placeholder="Game Title">
-      <input type="text" id="" name="game-developer" placeholder="Game Developer">
-      <input type="text" id="" name="game-publisher" placeholder="Game Publisher">
-      <input type="text" id="" name="game-genre" placeholder="Game Genre">
-
-      <input type="number" id="" name="game-rate" placeholder="Game Rate">
-      <input type="number" id="" name="game-play-time" placeholder="Game Play Time">
       <input type="text" id="" name="game-reld" placeholder="Game Release Date">
+      <input type="number" id="" name="game-rate" placeholder="Game Rate">
 
-      <select name="game-state" id="">
+      <select id="" name="game-platform">
+        <option value="other">  Other     </option>
+        <option value="xbox">   Xbox         </option>
+        <option value="psx">    Psx      </option>
+        <option value="pc">     Pc         </option>
+      </select>
+
+      <select id="" name="game-buy_state">
+        <option value="wishlist">   Wishlist         </option>
+        <option value="owned">      Owned         </option>
+      </select>
+      <input type="number" id="" name="game-buy_priority" placeholder="Game Buy Prio">
+
+
+      <select name="game-play_state" id="">
         <option value="plan">     Plan         </option>
         <option value="playing">  Playing      </option>
-        <option value="done">     Done         </option>
-        <option value="wishlist"> Wishlist     </option>
+        <option value="played">   Played         </option>
         <option value="drop">     Drop         </option>
       </select>
+      <input type="number" id="" name="game-play_priority" placeholder="Game Play Prio">
+
 
       <button id="submitButton" type="submit" class="">ثبت</button>
     </form>
@@ -46,14 +56,17 @@ import ShelfLayout from "../_ShelfLayout.astro";
     let x:any = document.forms["createForm"];
 
     const data = {
-      "game_title":       x["game-title"].value,
-      "game_developer":   x["game-developer"].value,
-      "game_publisher":   x["game-publisher"].value,
-      "game_genre":       x["game-genre"].value,
-      "game_rate":        x["game-rate"].value,
-      "play_time":        x["game-play-time"].value,
-      "release_date":     x["game-reld"].value,
-      "game_state":       x["game-state"].value,
+      "game_title":          x["game-title"].value,
+      "release_date":        x["game-reld"].value,
+      "game_rate":           x["game-rate"].value,
+      
+      "game_platform":       x["game-platform"].value,
+      
+      "game_buy_state":      x["game-buy_state"].value,
+      "game_buy_priority":   x["game-buy_priority"].value,
+
+      "game_play_state":     x["game-play_state"].value,
+      "game_play_priority":  x["game-play_priority"].value,
     }
 
     console.log(data);

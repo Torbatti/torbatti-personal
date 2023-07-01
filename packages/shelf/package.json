@@ -1,5 +1,5 @@
 {
-  "name": "shelf",
+  "name": "site-shelf",
   "description": "shelf description",
   "type": "module",
   "version": "0.0.1",
@@ -14,7 +14,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "astro dev",
+    "dev": "astro dev --port 3001",
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview"

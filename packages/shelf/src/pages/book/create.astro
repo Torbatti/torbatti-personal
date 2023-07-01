@@ -7,28 +7,50 @@ import ShelfLayout from "../_ShelfLayout.astro";
     <form class="flex flex-col low-gap" name="createForm" onsubmit="event.preventDefault()">
     <!-- <form class="flex flex-col low-gap" name="createForm" onsubmit="event.preventDefault()"> -->
 
-      <input type="text" id="" name="book-title" placeholder="Book Title">
-      <input type="text" id="" name="book-author" placeholder="Book Author">
-      <input type="text" id="" name="book-translator" placeholder="Book Translator">
-      <input type="text" id="" name="book-genre" placeholder="Book Genre">
+      <input type="text" id="" name="book_title" placeholder="book_title">
 
-      <input type="number" id="" name="book-rate" placeholder="Book Rate">
-      <input type="number" id="" name="book-chap" placeholder="Book Chapters">
+      <input type="text" id="" name="book_author" placeholder="book_author">
+      <input type="text" id="" name="book_translator" placeholder="book_translator">
+      <input type="text" id="" name="book_publisher" placeholder="book_publisher">
 
-      <input type="text" id="" name="book-reld" placeholder="Book Release Date">
+      <input type="text" id="" name="book_genre" placeholder="book_genre">
 
-      <select name="book-state" id="">
-        <option value="خوانده خواهد شد">      خوانده خواهد شد      </option>
-        <option value="درحال خوانده شدن">     درحال خوانده شدن   </option>
-        <option value="خوانده شده است">       خوانده شده است      </option>
-        <option value="رها شده">              رها شده      </option>
-        <option value="سبد خرید">             سبد خرید  </option>
+      <input type="text" id="" name="release_date" placeholder="release_date">
+      <input type="number" id="" name="book_rate" placeholder="book_rate">
+      
+
+      <select name="book_series_type" id="">
+        <option value="تک قسمت">  تک قسمت</option>
+        <option value="مجموعه">  مجموعه</option>
       </select>
+      <input type="text" id="" name="book_series_title" placeholder="book_series_title">
+      <input type="text" id="" name="book_series_chapters" placeholder="book_series_chapters">
+
+      <select name="book_buy_state" id="">
+        <option value="دارا">  دارا</option>
+        <option value="خواهان">  خواهان</option>
+      </select>
+      <input type="number" id="" name="book_buy_priority" placeholder="book_buy_priority">
+      
+
+      <select name="book_read_state" id="">
+        <option value="انتظار">  انتظار</option>
+        <option value="درحال">  درحال</option>
+        <option value="خوانده">  خوانده</option>
+        <option value="پرتاب">  پرتاب</option>
+      </select>
+      <input type="number" id="" name="book_read_priority" placeholder="book_read_priority">
+
+
+      <select name="book_paper_type" id="">
+        <option value="فیزیکی">  فیزیکی</option>
+        <option value="مجازی">  مجازی</option>
+      </select>
+
 
       <button id="submitButton" type="submit" class="">ثبت</button>
 
     </form>
-
 
   </div>
 </ShelfLayout>
@@ -49,14 +71,27 @@ import ShelfLayout from "../_ShelfLayout.astro";
     let x:any = document.forms["createForm"];
 
     const data = {
-      "book_title":       x["book-title"].value,
-      "book_author":      x["book-author"].value,
-      "book_translator":  x["book-translator"].value,
-      "book_genre":       x["book-genre"].value,
-      "book_rate":        x["book-rate"].value,
-      "book_chapters":    x["book-chap"].value,
-      "release_date":     x["book-reld"].value,
-      "book_state":       x["book-state"].value,
+      "book_title":       x["book_title"].value,
+
+      "book_author":       x["book_author"].value,
+      "book_translator":       x["book_translator"].value,
+      "book_publisher":       x["book_publisher"].value,
+
+      "release_date":       x["release_date"].value,
+      "book_genre":       x["book_genre"].value,
+      "book_rate":       x["book_rate"].value,
+
+      "book_series_type":       x["book_series_type"].value,
+      "book_series_title":       x["book_series_title"].value,
+      "book_series_chapters":       x["book_series_chapters"].value,
+
+      "book_buy_state":       x["book_buy_state"].value,
+      "book_buy_priority":       x["book_buy_priority"].value,
+
+      "book_read_state":       x["book_read_state"].value,
+      "book_read_priority":       x["book_read_priority"].value,
+
+      "book_paper_type":       x["book_paper_type"].value,
     }
 
     console.log(data);

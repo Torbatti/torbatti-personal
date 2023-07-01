@@ -1,57 +1,15 @@
 ---
-import ShelfLayout from "../_ShelfLayout.astro";
+import ShelfLayout from "../../_ShelfLayout.astro";
 
 // ! THIS IS NOT A MISTAKE
 // ! NO POCKET BASE SERVER IN PROD
 import pb from "libs/pocketbase";
 
 const adminData = await pb.admins.authWithPassword('admin@example.com', 'admin@example.com');
-const records = await pb.collection('books').getFullList({sort: 'book_title',});
+const records = await pb.collection('books').getFullList({sort: 'book_rate',});
 // console.log(records);
 ---
 <ShelfLayout title="کتابخانه" description="" author="" key_words="" child_url="book">
-
-
-  <div id="shelf-book" class="tc2 shelf flex flex-col">
-
-    <div id="items" class="flex low-gap">
-      <p class="a">وضعیت:</p>
-      <a href="/shelf/book/state/owned/" class="tc5">دارا</a>
-      <a href="/shelf/book/state/wishlist/" class="tc5">خواهان</a>
-    </div>
-
-    <div id="items" class="flex low-gap">
-      <p class="a">خواندن:</p>
-      <a href="/shelf/book/state/plan/" class="tc5">انتظار</a>
-      <a href="/shelf/book/state/reading/" class="tc5">درحال</a>
-      <a href="/shelf/book/state/read/" class="tc5">خوانده</a>
-      <a href="/shelf/book/state/drop/" class="tc5">پرتاب</a>
-    </div>
-
-    <div id="items" class="flex low-gap">
-      <p class="a">ترین:</p>
-      <a href="/shelf/book/rate/best/" class="tc5">بهترین</a>
-      <a href="/shelf/book/rate/worst/" class="tc5">بدترین</a>
-    </div>
-
-    <div id="items" class="flex low-gap">
-      <p class="a">اولیت:</p>
-      <a href="/shelf/book/priority/buy/" class="tc5">خریدن</a>
-      <a href="/shelf/book/priority/read/" class="tc5">خوندن</a>
-    </div>
-
-    <div id="items" class="flex low-gap">
-      <p class="a">نوع:</p>
-      <a href="/shelf/book/type/series/" class="tc5">مجموعه</a>
-      <a href="/shelf/book/type/oneshot/" class="tc5">تک قسمت</a>
-    </div>
-
-    <div id="items" class="flex low-gap">
-      <p class="a">بقیه موارد:</p>
-      <a href="/shelf/book/critique/" class="tc5">نقد و بررسی</a>
-    </div>
-
-  </div>
 
   <div id="posts" class="flex flex-wrap high-gap">
     {records.map((post)=>(
@@ -59,7 +17,7 @@ const records = await pb.collection('books').getFullList({sort: 'book_title',});
       <div id="post" class="tc2 flex flex-col jcontent-center aitems-center">
 
         <a href=`/shelf/book/critique/id/${post.id}` class="tc5">{post.book_title}</a>
-        
+
         <div id="book-from" class="flex low-gap">
           <p> {post.book_author} </p>
           {
@@ -67,30 +25,10 @@ const records = await pb.collection('books').getFullList({sort: 'book_title',});
             ?<></>
             :<p>|</p><p> {post.book_translator} </p>
           }
-
           {
             (post.release_date === "") 
             ?<></>
             :<p>|</p><p> {post.release_date} </p>
-          }
-          {
-            (post.book_publisher === "") 
-            ?<></>
-            :<p>|</p><p> {post.book_publisher} </p>
-          }
-        </div>
-
-        <div id="book-series" class="flex low-gap">
-          {
-            (post.book_series_type === "مجموعه")
-            ?
-              <p>{post.book_series_type}</p>
-              <p>|</p>
-              <p>{post.book_series_title}</p>
-              <p>|</p>
-              <p>C:{post.book_series_chapters}</p>
-            : 
-              <></>
           }
         </div>
 
@@ -125,7 +63,19 @@ const records = await pb.collection('books').getFullList({sort: 'book_title',});
           }
         </div>
 
-
+        <div id="book-series" class="flex low-gap">
+          {
+            (post.book_series_type === "مجموعه")
+            ?
+              <p>{post.book_series_type}</p>
+              <p>|</p>
+              <p>{post.book_series_title}</p>
+              <p>|</p>
+              <p>C:{post.book_series_chapters}</p>
+            : 
+              <></>
+          }
+        </div>
 
       </div>
     ))}
