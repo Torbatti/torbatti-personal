@@ -2,6 +2,10 @@
 import BaseBody from "./BaseBody.astro"
 import BaseHead from "./BaseHead.astro"
 
+import BaseHeader from "../components/BaseHeader.astro";
+import BaseFooter from "../components/BaseFooter.astro";
+
+
 type Props={
   title: string;
   description: string;
@@ -21,6 +25,48 @@ const {
     <slot name="head"/>
   </BaseHead>
   <BaseBody>
-    <slot/>
+
+    <BaseHeader>
+      <div id="header-right" slot="header-right" class="header_section flex aitems-center mid-gap">
+        <slot name="header-right"/>
+      </div>
+
+      <div id="header-middle" slot="header-middle" class="header_section flex aitems-center mid-gap">
+        <slot name="header-middle"/>
+      </div>
+
+      <div id="header-left" slot="header-left" class="header_section flex aitems-center mid-gap">
+        <slot name="header-left"/>
+        <a href="/blog/" class="tc3">بلاگ</a>
+        <a href="/projects/" class="tc3">پروژگان</a>
+        <a href="/shelf/" class="tc3">طاقچه</a>
+      </div>
+    </BaseHeader>
+
+    <div id="main">
+      <slot/>
+    </div>
+
+    <BaseFooter>
+      <div slot="footer-right">
+        <slot name="footer-right"/>
+      </div>
+
+      <div id="footer-middle" slot="footer-middle">
+        <slot name="footer-middle"/>
+      </div>
+
+      <div id="footer-left_slot" class="flex aitems-center mid-gap" slot="footer-left">
+        <slot name="footer-left"/>
+      </div>
+    </BaseFooter>
+    
   </BaseBody>
 </html>
+
+<style>
+  #header{}
+
+
+
+</style>
