@@ -13,7 +13,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "astro dev",
+    "dev": "astro dev --port 3000",
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview"
