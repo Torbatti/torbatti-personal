@@ -2,7 +2,7 @@
 
 ---
 <body class="bgc1">
-  <div class="bg-effect">
+  <div class="box bg-effect">
     <div class="ball b1"></div>
     <div class="ball b2"></div>
 
@@ -40,7 +40,7 @@
   }
 
   .b1,.b3,.b5,.b7,.b9{
-    animation: background-size 10s infinite , opacity-change 10s infinite;
+    animation: background-size 30s infinite , opacity-change 30s infinite;
 
 
     /* opacity: 1;
@@ -64,7 +64,7 @@
     background-size: 6px 6px;
   }
   .b2,.b4,.b6,.b8,.b10{
-    animation: background-size 10s infinite , opacity-change 10s infinite;
+    animation: background-size 30s infinite , opacity-change 30s infinite;
 
     background-color:var(--c3);
     left:0;bottom:0;
@@ -81,29 +81,29 @@
     --end-opacity:    .0;
   }
   
-  .b1,.b2{animation-delay:calc( 10s + .0s);}
-  .b3,.b4{animation-delay:calc( 10s + .33s);}
-  .b5,.b6{animation-delay:calc( 10s + 1s);}
-  .b7,.b8{animation-delay:calc( 10s + 1.33s);}
-  .b9{animation-delay:calc(     10s + 2s);}
-  .b10{animation-delay:calc(    10s + 2s);}
+  .b1,.b2{animation-delay:calc( 0s + .0s);}
+  .b3,.b4{animation-delay:calc( 0s + .33s);}
+  .b5,.b6{animation-delay:calc( 0s + 1s);}
+  .b7,.b8{animation-delay:calc( 0s + 1.33s);}
+  .b9{animation-delay:calc(     0s + 2s);}
+  .b10{animation-delay:calc(    0s + 2s);}
 
 @keyframes background-size{
-  from
+  0%,40%,100%
   {
     height:var(--start_size);
     width:var(--start_size);
     border-radius:calc(var(--mid_size)/2);
-    left:0rem;top:0rem;
+    left:1rem;top:0rem;
 
   }
-  to
+  20%
   {
     height:var(--mid_size);
     width:var(--mid_size);
 
     border-radius:calc(var(--mid_size)/2);
-    left:0rem;top:4rem;
+    left:1rem;top:0rem;
 
   }
   
