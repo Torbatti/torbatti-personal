@@ -1,5 +1,7 @@
 ---
 import ShelfLayout from "../_ShelfLayout.astro";
+import "./create.css"
+
 ---
 <ShelfLayout title="چاه بازی" description="" author="" key_words="" child_url="game">
   <div id="create_section" class="tc2 vbox flex flex-col aitems-center jcontent-center high-gap">
@@ -7,32 +9,81 @@ import ShelfLayout from "../_ShelfLayout.astro";
     <form class="flex flex-col low-gap" name="createForm" onsubmit="event.preventDefault()">
     <!-- <form class="flex flex-col low-gap" name="createForm" onsubmit="event.preventDefault()"> -->
 
-      <input type="text" id="" name="game-title" placeholder="Game Title">
-      <input type="text" id="" name="game-reld" placeholder="Game Release Date">
-      <input type="number" id="" name="game-rate" placeholder="Game Rate">
+      <input type="text" id="" name="game_title" placeholder="game_title">
+      <input type="text" id="" name="game_rate" placeholder="game_rate">
+      <input type="text" id="" name="game_release_date" placeholder="game_release_date">
 
-      <select id="" name="game-platform">
-        <option value="other">  Other     </option>
-        <option value="xbox">   Xbox         </option>
-        <option value="psx">    Psx      </option>
-        <option value="pc">     Pc         </option>
+      
+      <input type="text" id="" name="game_developer" placeholder="game_developer">
+      <input type="text" id="" name="game_publisher" placeholder="game_publisher">
+
+      <input type="text" id="" name="game_link_one" placeholder="game_link_one">
+      <input type="text" id="" name="game_link_two" placeholder="game_link_two">
+      <input type="text" id="" name="game_link_three" placeholder="game_link_three">
+
+      <br>
+
+      <select id="game_state_buy" name="game_state_buy" class="custom-select">
+        <option value="bought">bought</option>
+        <option value="wishlist">wishlist</option>
       </select>
 
-      <select id="" name="game-buy_state">
-        <option value="wishlist">   Wishlist         </option>
-        <option value="owned">      Owned         </option>
+      <br>
+
+      <select id="game_state_play" name="game_state_play" class="custom-select">
+        <option value="plan">plan</option>
+        <option value="playing">playing</option>
+        <option value="played">played</option>
+        <option value="replaying">replaying</option>
+        <option value="drop">drop</option>
       </select>
-      <input type="number" id="" name="game-buy_priority" placeholder="Game Buy Prio">
 
+      <br>
+      <select id="game_platform" name="game_platform" class="custom-select" multiple>
+        <option value="Android">Android</option>
+        <option value="Ios">Ios</option>
 
-      <select name="game-play_state" id="">
-        <option value="plan">     Plan         </option>
-        <option value="playing">  Playing      </option>
-        <option value="played">   Played         </option>
-        <option value="drop">     Drop         </option>
+        <option value="Xbox">Xbox</option>
+        <option value="Xbox360">Xbox360</option>
+        <option value="XboxOne">XboxOne</option>
+        <option value="XboxSS">XboxSS</option>
+        <option value="XboxSX">XboxSX</option>
+        
+        <option value="PsX">PsX</option>
+        <option value="Ps2">Ps2</option>
+        <option value="Ps2">Ps2</option>
+        <option value="Ps3">Ps3</option>
+        <option value="Ps4">Ps4</option>
+        <option value="Ps5">Ps5</option>
+        <option value="PsP">PsP</option>
+        <option value="PsVita">PsVita</option>
+
+        <option value="Steam">Steam</option>
+        <option value="Epicgames">Epicgames</option>
+        <option value="gog">gog</option>
+        <option value="itch">itch</option>
+        
+        <option value="NSwitch">NSwitch</option>
+        <option value="NDS">NDS</option>
+        <option value="N3DS">N3DS</option>
+        <option value="NES">NES</option>
+        <option value="SNES">SNES</option>
+
+        <option value="GameBoy">GB</option>
+        <option value="GameBoyColor">GBColor</option>
+        <option value="GameBoyAdvance">GBAdvance</option>
+        <option value="GameCube">GameCube</option>
+
+        <option value="Wii">Wii</option>
+        <option value="Wii U">Wii U</option>
+
+        <option value="DreamCast">DreamCast</option>
+        <option value="SegaPico">SegaPico</option>
+        <option value="SegaSaturn">SegaSaturn</option>
+        <option value="other">SegaGenesis</option>
+
+        <option value="other">Atari</option>
       </select>
-      <input type="number" id="" name="game-play_priority" placeholder="Game Play Prio">
-
 
       <button id="submitButton" type="submit" class="">ثبت</button>
     </form>
@@ -41,6 +92,104 @@ import ShelfLayout from "../_ShelfLayout.astro";
 </ShelfLayout>
 
 <script>
+   let game_platform=`
+  Android,Ios,
+  Xbox,Xbox360,XboxOne,XboxSS,XboxSX,
+  PsX,PsP,PsVita,Ps2,Ps3,Ps4,Ps5,
+  Steam,gog,Epicgames,itch,
+  NSwitch,N3DS,NDS,NES,SNES,
+  GameCube,GameBoyAdvance,GameBoy,GameBoyColor,
+  Wii,Wii U,
+  DreamCast,
+  SegaPico,SegaSaturn,SegaGenesis,
+  Atari,
+  `;
+
+  // class CustomSelect {
+  //   constructor(originalSelect) {
+  //     this.originalSelect = originalSelect;
+  //     this.customSelect = document.createElement("div");
+  //     this.customSelect.classList.add("select");
+      
+  //     this.originalSelect.querySelectorAll("option").forEach((optionElement) => {
+  //       const itemElement = document.createElement("div");
+
+  //       itemElement.classList.add("select__item");
+  //       itemElement.textContent = optionElement.textContent;
+  //       this.customSelect.appendChild(itemElement);
+  //     });
+
+  //     this.originalSelect.insertAdjacentElement("afterend", this.customSelect);
+  //     this.originalSelect.style.display = "none";
+  //   }
+  // }
+
+  // let customS = document.querySelectorAll(".custom-select");
+  // customS.forEach(selectElement => {
+  //   new CustomSelect(selectElement);
+  // });
+
+  class CustomSelect {
+  constructor(originalSelect) {
+    this.originalSelect = originalSelect;
+    this.customSelect = document.createElement("div");
+    this.customSelect.classList.add("select");
+
+    this.originalSelect.querySelectorAll("option").forEach((optionElement) => {
+      const itemElement = document.createElement("div");
+
+      itemElement.classList.add("select__item");
+      itemElement.textContent = optionElement.textContent;
+      this.customSelect.appendChild(itemElement);
+
+      if (optionElement.selected) {
+        this._select(itemElement);
+      }
+
+      itemElement.addEventListener("click", () => {
+        if (
+          this.originalSelect.multiple &&
+          itemElement.classList.contains("select__item--selected")
+        ) {
+          this._deselect(itemElement);
+        } else {
+          this._select(itemElement);
+        }
+      });
+    });
+
+    this.originalSelect.insertAdjacentElement("afterend", this.customSelect);
+    this.originalSelect.style.display = "none";
+  }
+
+  _select(itemElement) {
+    const index = Array.from(this.customSelect.children).indexOf(itemElement);
+
+    if (!this.originalSelect.multiple) {
+      this.customSelect.querySelectorAll(".select__item").forEach((el) => {
+        el.classList.remove("select__item--selected");
+      });
+    }
+
+    this.originalSelect.querySelectorAll("option")[index].selected = true;
+    itemElement.classList.add("select__item--selected");
+  }
+
+  _deselect(itemElement) {
+    const index = Array.from(this.customSelect.children).indexOf(itemElement);
+
+    this.originalSelect.querySelectorAll("option")[index].selected = false;
+    itemElement.classList.remove("select__item--selected");
+  }
+}
+
+document.querySelectorAll(".custom-select").forEach((selectElement) => {
+  new CustomSelect(selectElement);
+});
+
+
+
+
   import PocketBase from 'pocketbase';
   const pb = new PocketBase("http://127.0.0.1:8090");
 
@@ -51,22 +200,57 @@ import ShelfLayout from "../_ShelfLayout.astro";
   let subB:any = document.querySelector("#submitButton");
   subB.addEventListener("click",()=>submitForm())
 
+
+
+    
   async function submitForm() {    
     // Capture Form as X
     let x:any = document.forms["createForm"];
 
-    const data = {
-      "game_title":          x["game-title"].value,
-      "release_date":        x["game-reld"].value,
-      "game_rate":           x["game-rate"].value,
-      
-      "game_platform":       x["game-platform"].value,
-      
-      "game_buy_state":      x["game-buy_state"].value,
-      "game_buy_priority":   x["game-buy_priority"].value,
+    let gsb = [];
+    let gsp = [];
+    let gp = [];
 
-      "game_play_state":     x["game-play_state"].value,
-      "game_play_priority":  x["game-play_priority"].value,
+    function getValue(myElementId,myArray){
+      let x = document.getElementById(myElementId);
+      
+      for (var i = 0; i < x.options.length; i++) {
+        if(x.options[i].selected){
+          // console.log(x.options[i].value);
+          let lilArray = x.options[i].value;
+          myArray.push(lilArray);
+        }
+      }
+    }
+
+    getValue("game_state_buy",gsb)
+    getValue("game_state_play",gsp)
+    getValue("game_platform",gp)
+    
+    console.log(gsb[0]);
+    console.log(gsp[0]);
+    console.log(gp);
+
+
+    const data = {
+      "game_title":          x["game_title"].value,
+      "game_release_date":   x["game_release_date"].value,
+      "game_rate":           x["game_rate"].value,
+
+      "game_developer":          x["game_developer"].value,
+      "game_publisher":          x["game_publisher"].value,
+
+      "game_platform":       gp,
+      
+      "game_state_buy":     gsb[0],
+      "game_state_play":     gsp[0],
+
+      "game_link_one":          x["game_link_one"].value,
+      "game_link_two":          x["game_link_two"].value,
+      "game_link_three":        x["game_link_three"].value,
+
+
+
     }
 
     console.log(data);
@@ -75,37 +259,10 @@ import ShelfLayout from "../_ShelfLayout.astro";
 
   }
 
+ 
+
 </script>
 
 <style>
-  /* REMOVES number type input arrows */
-    /* Chrome, Safari, Edge, Opera */
-    input::-webkit-outer-spin-button,
-    input::-webkit-inner-spin-button {
-      -webkit-appearance: none;
-      margin: 0;
-    }
-    /* Firefox */
-    input[type=number] {
-      -moz-appearance: textfield;
-    }
-  /*  */
 
-  a{text-decoration:none;font-size:small;font-weight: bold;}
-  a:hover{text-decoration:underline;}
-
-  #create_section{
-    height:90vh;
-  }
-  form input,form button,form select{
-    border-radius:4px;
-    padding:4px 1rem;
-    text-align:left;
-  }
-  form button{
-    text-align:center;
-    background-color:var(--c3);
-    color:var(--c1);
-    cursor: pointer;
-  }
 </style>
