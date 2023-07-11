@@ -3,17 +3,15 @@
   "compilerOptions": {
     "baseUrl":".",
     "paths":{
+      "@public/*": ["public/*"],
+
       "@components/*": ["src/components/*"],
       "@layouts/*": ["src/layouts/*"],
       "@pages/*": ["src/pages/*"],
     
       "@styles/*": ["src/styles/*"],
       "@libs/*": ["src/libs/*"],
-    
-      "@public/*": ["public/*"],
-
-      "@ui/*": ["../_ui/*"],
-      "@ui/astro/*": ["../_ui/astro/*"]
+      "@scripts/*": ["src/scripts/*"],
     }
   }
 }

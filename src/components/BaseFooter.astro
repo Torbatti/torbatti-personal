@@ -1,0 +1,17 @@
+---
+---
+<div id="footer" class="tc3 text-small text-bold box flex aitems-center">
+  <small>
+    Copyright &copy;
+    <span id="copyright" class="text-small text-bold"></span>
+    | All rights reserved
+  </small>
+</div>
+
+<script type="module">
+  document.querySelector("#copyright").textContent= new Date().getFullYear().toString();
+</script>
+
+<style>
+  #footer{height:3rem;}
+</style>

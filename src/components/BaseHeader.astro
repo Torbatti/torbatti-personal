@@ -1,0 +1,205 @@
+---
+
+---
+<header class=" bgc1">
+  <div id="header" class="box flex jcontent-between aitems-center">
+
+    <div id="header-right" class="flex aitems-center">
+      <a href="/" id="site_logo" class="text-medium"> تربتی </a>
+      <div class="dots">
+        <div class="cd1"></div>
+        <div class="cd2"></div>
+        <div class="cd3"></div>
+      </div>
+      <slot name="header-right"/>
+    </div>
+
+    <div id="header-middle" class="flex aitems-center mid-gap">
+      <slot name="header-middle"/>
+    </div>
+    
+    <div id="header-left" class="flex aitems-center mid-gap sm-hide">
+      <slot name="header-left"/>
+      <a href="/blog/" class="tc3">بلاگ</a>
+      <a href="/art/" class="tc3">هنر</a>
+      <a href="/story/" class="tc3">داستان</a>
+      <a href="/shelf/" class="tc3">طاقچه</a>
+      <a href="/project/" class="tc3">پروژگان</a>
+    </div>
+
+    <div id="header_eyes" class="not_selected flex jcontent-between aitems-center md-hide">
+      <div id="header_eye" class=""></div>
+      <div id="header_eye" class=""></div>
+      <div id="header_eye" class=""></div>
+    </div>
+
+    <div id="header_menu" class="not_selected md-hide">
+      <div id="header_menu-box" class="box flex flex-col jcontent-end mid-gap">
+
+        <slot name="header-left"/>
+
+        <a href="/" class="tc1">صفحه اصلی</a>
+        <a href="/blog/" class="tc1">بلاگ</a>
+        <a href="/art/" class="tc1">هنر</a>
+        <a href="/story/" class="tc1">داستان</a>
+        <a href="/shelf/" class="tc1">طاقچه</a>
+        <a href="/project/" class="tc1">پروژگان</a>
+
+        <div id="menu_closers" class="">
+          <div id="menu_closer" class="one"></div>
+          <div id="menu_closer" class="two"></div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</header>
+
+<script type="module">
+  const header_eyes = document.getElementById("header_eyes");
+  const header_menu = document.getElementById("header_menu");
+  const menu_closers = document.getElementById("menu_closers");
+
+  function toggle_menu() {
+    // header_menu.classList.toggle("all-hide")
+    header_menu.classList.toggle("not_selected")
+    header_menu.classList.toggle("selected")
+
+    header_menu.classList.toggle("not_selected")  
+    header_eyes.classList.toggle("selected")
+  }
+  menu_closers.addEventListener("click", toggle_menu);
+  header_eyes.addEventListener("click", toggle_menu);
+
+</script>
+
+
+<style>
+  /* header{position:sticky;top:0;z-index:2;} */
+  #header{height:3rem;}
+
+  a#site_logo{transition:transform .3s ease;color:var(--c3);font-weight:bolder;font-size:medium;}
+  a#site_logo:hover{text-decoration:none;transform:translate(0px,-3px);}
+
+  /* Header EYES */
+  #header_eyes{
+    width: 1.75rem;
+    height:30px;
+  }
+  #header_eye{
+    width:.5rem;
+    height:.5rem;
+    border-radius:100%;
+  }
+  #header_eyes.not_selected #header_eye{
+    background: -webkit-radial-gradient(#339989,#326e66);
+  }
+  #header_eyes.selected #header_eye{
+    background: -webkit-radial-gradient(var(--c5),#8a5a58);
+  }
+
+  #menu_closers{
+    height:32px;
+    width:32px;
+    display:flex;
+    padding-right:.75rem;
+    margin-top:1rem;
+    border-radius: .25rem;
+  }
+  #menu_closer{
+    width:3px;
+    height:32px;
+    background-color: var(--c1);
+  }
+  #menu_closer.one{
+    transform: rotate(135deg);
+  }
+  #menu_closer.two{
+    transform: rotate(45deg);
+  }
+  
+
+  #header_menu{
+    width: 100%;
+    height:calc(100vh - 3rem);
+    position:absolute;
+    top: 3rem;
+    left: -100%;
+
+    z-index: 10000;
+    background-color:var(--c3);
+    
+    display:flex;
+    align-items:center;
+
+    transition:transform 1.25s,opacity 1.25s;
+  }
+  #header_menu.not_selected{
+    transform: translateX(0);
+    opacity: .6;
+    /* width:0; */
+  }
+  #header_menu.selected{
+    transform: translateX(100%);
+    opacity: 1;
+
+    /* width:100%; */
+  }
+  #header_menu-box{
+    border:2px solid var(--c1);
+    height:calc(100vh - 6rem);
+    padding:.5rem;
+  }
+
+  /* DOTS */
+  .dots{
+    width:35px;
+    height:20px;
+  }
+  .cd1,.cd2,.cd3{
+    position: absolute;
+    top: 0;
+    border-radius:100%;
+    width:.5rem;
+    height:.5rem;
+    background: -webkit-radial-gradient(#339989,#326e66);
+  }
+  .cd1{
+    transform: translate(-1rem,1rem);
+  }
+  .cd2{
+    transform: translate(-1rem,1.6rem);
+  }
+  .cd3{
+    transform: translate(-.5rem,1.25rem);
+  }
+
+  a#site_logo:hover ~ .dots .cd1{
+    --tcsx:-1rem;
+    --tcsy:1rem;
+    --tcex:-.5rem;
+    --tcey:1.25rem;
+    animation:translate-change .25s infinite;
+  }
+  a#site_logo:hover ~ .dots .cd2{
+    --tcsx:-1rem;
+    --tcsy:1.6rem;
+    --tcex:-1rem;
+    --tcey:1rem;
+    animation:translate-change .25s infinite;
+  }
+  a#site_logo:hover ~ .dots .cd3{
+    --tcsx:-.5rem;
+    --tcsy:1.25rem;
+    --tcex:-1rem;
+    --tcey:1.6rem;
+    animation:translate-change .25s infinite;
+  }
+  @keyframes translate-change {
+    from {transform: translate(var(--tcsx),var(--tcsy))}
+    to   {transform: translate(var(--tcex),var(--tcey))}
+  }
+
+</style>
+

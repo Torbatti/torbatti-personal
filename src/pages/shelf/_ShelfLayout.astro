@@ -1,0 +1,42 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro"
+
+type Props={
+  title: string;
+  description: string;
+  key_words:string;
+  author:string;
+
+  child_url:string;
+};
+const {
+  title,
+  description,
+  key_words,
+  author,
+
+  child_url,
+} = Astro.props;
+
+---
+<BaseLayout title={title} description={description} author={author} key_words={key_words}>
+  <div slot="header-right" class="flex mid-gap">
+    <a href=`/shelf/${child_url}/` class="tc3">{title}</a>
+    <a href=`/shelf/${child_url}/create` class="tc3 sm-hide">ساخت</a>
+  </div>
+
+  <div id="shelf" class="box">
+    <slot/>
+  </div>
+  
+</BaseLayout>
+
+<style>
+
+  #shelf{
+		min-height: calc(100vh - 6rem);
+    padding:8px;
+		border:2px solid var(--c3);
+	}
+
+ </style>
