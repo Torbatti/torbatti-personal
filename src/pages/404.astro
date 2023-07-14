@@ -2,7 +2,7 @@
 import BaseLayout from "@layouts/BaseLayout.astro"
 ---
 <BaseLayout title="صفحه ی مورد نظر پیدا نشد" description="" author="" key_words="">
-  <div id="introPage" class="box flex flex-col jcontent-between tc2">
+  <div id="main_box" class="box flex flex-col jcontent-between tc2">
     <div>
 
     </div>
@@ -34,9 +34,6 @@ import BaseLayout from "@layouts/BaseLayout.astro"
 
 <style>
   #footer{height:3rem;}
-</style>
-
-<style>
   #header-left_slot a{text-decoration:none;font-size:small;font-weight: bold;}
   #header-left_slot a:hover{text-decoration:underline;}
 
@@ -49,9 +46,11 @@ import BaseLayout from "@layouts/BaseLayout.astro"
   }
 
 	a{text-decoration: none;}
-	#introPage{
-		height: calc(100vh - 6rem);
-		border-right:2px solid var(--c3);
+	#main_box{
+		min-height: calc(100vh - 6rem);
+		border:2px solid var(--c3) ;
+		border-radius:.25rem;
+		padding:.5rem;
 	}
 	.intro-creative_title{
 		position:absolute;display:flex;z-index:-1; transform:rotate(90deg) translate(2rem,-4.5rem);font-size:4rem;
@@ -109,9 +108,6 @@ import BaseLayout from "@layouts/BaseLayout.astro"
 		padding-left:4px;
 	}
 	@media(min-width:768px){
-		#introPage{
-			border:2px solid var(--c3) ;
-		}
 		.intro-text{
 			font-size:medium;
 			border:2px dashed var(--c3);

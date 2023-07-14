@@ -1,5 +1,5 @@
 ---
-
+import header_closer from "@public/header_closer.svg"
 ---
 <header class=" bgc1">
   <div id="header" class="box flex jcontent-between aitems-center">
@@ -21,9 +21,8 @@
     <div id="header-left" class="flex aitems-center mid-gap sm-hide">
       <slot name="header-left"/>
       <a href="/blog/" class="tc3">بلاگ</a>
-      <a href="/art/" class="tc3">هنر</a>
-      <a href="/story/" class="tc3">داستان</a>
       <a href="/shelf/" class="tc3">طاقچه</a>
+      <a href="/museum/" class="tc3">موزه</a>
       <a href="/project/" class="tc3">پروژگان</a>
     </div>
 
@@ -33,28 +32,22 @@
       <div id="header_eye" class=""></div>
     </div>
 
-    <div id="header_menu" class="not_selected md-hide">
-      <div id="header_menu-box" class="box flex flex-col jcontent-end mid-gap">
-
-        <slot name="header-left"/>
-
-        <a href="/" class="tc1">صفحه اصلی</a>
-        <a href="/blog/" class="tc1">بلاگ</a>
-        <a href="/art/" class="tc1">هنر</a>
-        <a href="/story/" class="tc1">داستان</a>
-        <a href="/shelf/" class="tc1">طاقچه</a>
-        <a href="/project/" class="tc1">پروژگان</a>
-
-        <div id="menu_closers" class="">
-          <div id="menu_closer" class="one"></div>
-          <div id="menu_closer" class="two"></div>
-        </div>
-
-      </div>
-    </div>
-
   </div>
 </header>
+<div id="header_menu" class="not_selected md-hide bgc3">
+  <div id="header_menu-box" class="flex flex-col jcontent-end aitems-start high-gap text-bold text-small">
+    <slot name="header-left"/>
+    <a href="/" class="tc1 text-none">صفحه ی اصلی</a>
+    <a href="/blog/" class="tc1 text-none">بلاگ</a>
+    <a href="/shelf/" class="tc1 text-none">طاقچه</a>
+    <a href="/museum/" class="tc1 text-none">موزه</a>
+    <a href="/project/" class="tc1 text-none">پروژگان</a>
+    <div id="menu_closers">
+      <img src={header_closer} alt="header closer for mobile devices" height="32">
+    </div>
+  </div>
+</div>
+
 
 <script type="module">
   const header_eyes = document.getElementById("header_eyes");
@@ -66,7 +59,7 @@
     header_menu.classList.toggle("not_selected")
     header_menu.classList.toggle("selected")
 
-    header_menu.classList.toggle("not_selected")  
+    header_eyes.classList.toggle("not_selected")  
     header_eyes.classList.toggle("selected")
   }
   menu_closers.addEventListener("click", toggle_menu);
@@ -91,66 +84,59 @@
     width:.5rem;
     height:.5rem;
     border-radius:100%;
-  }
-  #header_eyes.not_selected #header_eye{
     background: -webkit-radial-gradient(#339989,#326e66);
   }
-  #header_eyes.selected #header_eye{
-    background: -webkit-radial-gradient(var(--c5),#8a5a58);
-  }
-
-  #menu_closers{
-    height:32px;
-    width:32px;
-    display:flex;
-    padding-right:.75rem;
-    margin-top:1rem;
-    border-radius: .25rem;
-  }
-  #menu_closer{
-    width:3px;
-    height:32px;
-    background-color: var(--c1);
-  }
-  #menu_closer.one{
-    transform: rotate(135deg);
-  }
-  #menu_closer.two{
-    transform: rotate(45deg);
-  }
-  
+  #header_eyes.not_selected #header_eye{}
+  #header_eyes.selected #header_eye{}
 
   #header_menu{
     width: 100%;
-    height:calc(100vh - 3rem);
-    position:absolute;
-    top: 3rem;
-    left: -100%;
+    height: calc(100vh - 3rem);
+    position: absolute;
+    left:0;
 
-    z-index: 10000;
-    background-color:var(--c3);
-    
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
     display:flex;
+    justify-content: center;
     align-items:center;
 
-    transition:transform 1.25s,opacity 1.25s;
   }
   #header_menu.not_selected{
-    transform: translateX(0);
-    opacity: .6;
-    /* width:0; */
+    width: 0;
+    transition: width .5s .5s;
+
   }
   #header_menu.selected{
-    transform: translateX(100%);
-    opacity: 1;
+    width:100%;
+    transition: width .5s;
 
-    /* width:100%; */
   }
   #header_menu-box{
-    border:2px solid var(--c1);
     height:calc(100vh - 6rem);
+    border:2px solid var(--c1);
+    border-radius: .25rem;
     padding:.5rem;
   }
+  #header_menu.not_selected #header_menu-box{
+    width: 0;
+    opacity: 0;
+    transition: width .5s .5s , opacity .5s ;
+  }
+  #header_menu.selected #header_menu-box{
+    width:calc(100% - 2rem);
+    opacity: 1;
+    transition: width .5s , opacity .5s .5s;
+  }
+  #header_menu,#header_menu-box{
+    
+  }
+
+
+
+
 
   /* DOTS */
   .dots{

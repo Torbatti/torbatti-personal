@@ -1,0 +1,126 @@
+---
+
+
+---
+
+<div id="orbit">
+  <div class="orbit">
+    <div class="big"></div>
+    <div class="small"></div>
+  </div>
+  <div class="orbiter">
+    <div class="right"></div>
+    <div class="top"></div>
+  </div>
+  <div class="earth">
+    <div class="island"></div>
+    <div class="island2"></div>
+  </div>
+</div>
+
+
+<style>
+  .earth{
+    width: 48px;
+    height: 48px;
+    position: absolute;
+    z-index: -1001;
+    border-radius: 100%;
+    top:calc(50vh - 1rem);
+    left:1.5rem;
+    background-size: 2px 2px;
+    background-image:  repeating-linear-gradient(0deg, var(--c3), var(--c3) 1px, transparent 1px, transparent);
+    animation: rotate_orbiter 8s infinite;
+  }
+  .island{
+    width: 10px;
+    height: 10px;
+    transform:translateX(6px);
+    background-size: 2px 2px;
+    background-image:  repeating-linear-gradient(0deg, var(--c2), var(--c2) 1px, transparent 1px, transparent);
+    border-radius: 100%;
+  }
+  .island2{
+    width: 6px;
+    height: 6px;
+    transform:translate(16px, 48px);
+    background-size: 2px 2px;
+    background-image:  repeating-linear-gradient(0deg, var(--c5), var(--c5) 1px, transparent 1px, transparent);
+    border-radius: 100%;
+  }
+
+  #orbit{
+    height:calc(100vh - 3rem);
+
+    position:absolute;
+    left:1.2rem;
+    top:-4rem;
+    z-index:-1001;
+  }
+  .orbit{
+    width: 5rem;
+    height: 16px;
+    position: absolute;
+    z-index: -1003;
+    top:calc(50vh - 1.5rem);
+    left:0;
+  }
+  .orbit .big{
+    position: absolute;
+    width: 4.5rem;
+    height:4.5rem;
+    border-radius:100%;
+    opacity: 0.6;
+    background-size: 2px 2px;
+    background-image:  repeating-linear-gradient(0deg, var(--c2), var(--c2) 1px, transparent 1px, transparent);
+  }
+  .orbit .small{
+    position: absolute;
+    width: 4.25rem;
+    height:4.25rem;
+    left:10px;
+    top: 2px;
+    border-radius:100%;
+    opacity: 1;
+    background-size: 2px 2px;
+    background-image:  repeating-linear-gradient(0deg, var(--c1), var(--c1) 1px, transparent 1px, transparent);
+  }
+
+  .orbiter .top{
+    position: absolute;
+    width: 16px;
+    height:16px;
+    border-radius:100%;
+    opacity: 0.7;
+    background-size: 2px 2px;
+    background-image:  repeating-linear-gradient(0deg, var(--c3), var(--c3) 1px, transparent 1px, transparent);
+  }
+  .orbiter .right{
+    position: absolute;
+    width: 16px;
+    height:16px;
+    border-radius:100%;
+    opacity: 0.7;
+    background-size: 2px 2px;
+    background-image:  repeating-linear-gradient(45deg, var(--c3), var(--c3) 1px, transparent 1px, transparent);
+  }
+
+  .orbiter{
+    width: 6rem;
+    height: 16px;
+    position: absolute;
+    z-index: -1001;
+    top:50vh;
+    left:0;
+    
+    animation: rotate_orbiter 2s infinite;
+  }
+  @keyframes rotate_orbiter {
+    from{
+      transform: rotate(180deg);
+    }
+    to{
+      transform: rotate(-180deg);
+    }
+  }
+</style>

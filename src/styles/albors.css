@@ -187,9 +187,9 @@ body  {font-family:Vazirmatn,sans-serif;direction:rtl;}
 .acontent-evenly    {align-content:space-evenly;}
 
 /* Hide */
-.all-hide{display:none;}
-@media(max-width:768px){.sm-hide{display:none;}}
-@media(min-width:768px){.md-hide{display:none;}}
+.all-hide{display:none !important;}
+@media(max-width:768px){.sm-hide{display:none  !important;}}
+@media(min-width:768px){.md-hide{display:none  !important;}}
 
 /* Defaults */
 .d-bg-change   {transition:background-color 1.25s;}
